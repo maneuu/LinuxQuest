@@ -8,7 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import br.com.linuxquest.app.ui.screens.PracticeScreen
+import br.com.linuxquest.app.ui.screens.DictionaryScreen
+import br.com.linuxquest.app.ui.screens.MissionScreen
 import br.com.linuxquest.app.ui.screens.ProfileScreen
 import br.com.linuxquest.app.ui.screens.ProgressScreen
 import br.com.linuxquest.app.ui.screens.TrackScreen
@@ -17,24 +18,44 @@ import br.com.linuxquest.app.ui.screens.TrackScreen
 fun MainScreen() {
     var currentRoute by rememberSaveable { mutableStateOf(Screen.Track.route) }
 
-    val currentScreen = Screen.items.find { it.route == currentRoute } ?: Screen.Track
+    // Tela de missão abre em tela separada sem a Bottom Navigation
+    if (currentRoute == Screen.Mission.route) {
+        MissionScreen(
+            onClose = {
+                currentRoute = Screen.Track.route
+            }
+        )
+    } else {
+        val currentScreen = Screen.items.find { it.route == currentRoute } ?: Screen.Track
 
-    Scaffold(
-        bottomBar = {
-            LinuxQuestBottomNavigation(
-                currentScreen = currentScreen,
-                onScreenSelected = { screen ->
-                    currentRoute = screen.route
-                }
-            )
-        }
-    ) { innerPadding ->
-        val modifier = Modifier.padding(innerPadding)
-        when (currentScreen) {
-            is Screen.Track -> TrackScreen(modifier = modifier)
-            is Screen.Practice -> PracticeScreen(modifier = modifier)
-            is Screen.Progress -> ProgressScreen(modifier = modifier)
-            is Screen.Profile -> ProfileScreen(modifier = modifier)
+        Scaffold(
+            bottomBar = {
+                LinuxQuestBottomNavigation(
+                    currentScreen = currentScreen,
+                    onScreenSelected = { screen ->
+                        currentRoute = screen.route
+                    }
+                )
+            }
+        ) { innerPadding ->
+            val modifier = Modifier.padding(innerPadding)
+            when (currentScreen) {
+                is Screen.Track -> TrackScreen(
+                    onOpenMission = {
+                        currentRoute = Screen.Mission.route
+                    },
+                    modifier = modifier
+                )
+                is Screen.Dictionary -> DictionaryScreen(modifier = modifier)
+                is Screen.Progress -> ProgressScreen(modifier = modifier)
+                is Screen.Profile -> ProfileScreen(modifier = modifier)
+                else -> TrackScreen(
+                    onOpenMission = {
+                        currentRoute = Screen.Mission.route
+                    },
+                    modifier = modifier
+                )
+            }
         }
     }
 }
