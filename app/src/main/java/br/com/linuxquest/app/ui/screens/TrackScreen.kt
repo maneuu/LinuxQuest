@@ -64,7 +64,7 @@ import br.com.linuxquest.app.ui.theme.TextSecondary
 
 @Composable
 fun TrackScreen(
-    onOpenMission: () -> Unit,
+    onOpenMission: (lessonId: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TrackViewModel = remember { TrackViewModel() }
 ) {
@@ -82,8 +82,8 @@ fun TrackScreen(
             )
             is TrackUiState.Success -> TrackContentView(
                 levelsWithLessons = state.levelsWithLessons,
-                onLessonClick = { _ ->
-                    onOpenMission()
+                onLessonClick = { lesson ->
+                    onOpenMission(lesson.id)
                 }
             )
         }

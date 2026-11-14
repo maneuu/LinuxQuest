@@ -17,10 +17,12 @@ import br.com.linuxquest.app.ui.screens.TrackScreen
 @Composable
 fun MainScreen() {
     var currentRoute by rememberSaveable { mutableStateOf(Screen.Track.route) }
+    var selectedLessonId by rememberSaveable { mutableStateOf<String?>(null) }
 
     // Tela de missão abre em tela separada sem a Bottom Navigation
     if (currentRoute == Screen.Mission.route) {
         MissionScreen(
+            lessonId = selectedLessonId,
             onClose = {
                 currentRoute = Screen.Track.route
             }
@@ -41,7 +43,8 @@ fun MainScreen() {
             val modifier = Modifier.padding(innerPadding)
             when (currentScreen) {
                 is Screen.Track -> TrackScreen(
-                    onOpenMission = {
+                    onOpenMission = { lessonId ->
+                        selectedLessonId = lessonId
                         currentRoute = Screen.Mission.route
                     },
                     modifier = modifier
@@ -50,7 +53,8 @@ fun MainScreen() {
                 is Screen.Progress -> ProgressScreen(modifier = modifier)
                 is Screen.Profile -> ProfileScreen(modifier = modifier)
                 else -> TrackScreen(
-                    onOpenMission = {
+                    onOpenMission = { lessonId ->
+                        selectedLessonId = lessonId
                         currentRoute = Screen.Mission.route
                     },
                     modifier = modifier
