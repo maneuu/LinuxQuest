@@ -18,6 +18,7 @@ sealed class Screen(
     object Progress : Screen("progresso", "Progresso", Icons.Default.Star)
     object Profile : Screen("perfil", "Perfil", Icons.Default.Person)
     object Mission : Screen("missao", "Missão", Icons.Default.Close)
+    object CommandDetail : Screen("comando", "Comando", Icons.Default.Search)
 
     companion object {
         // Apenas as 4 abas visíveis na Bottom Navigation

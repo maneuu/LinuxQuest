@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Dispara a verificação assíncrona do Firestore ao iniciar
+        // verificação assíncrona do Firestore ao iniciar
         lifecycleScope.launch {
             FirestoreVerifier.verifyAllCollections()
         }

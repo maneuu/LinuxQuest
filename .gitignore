@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Firebase (compartilhado fora do repositório)
+google-services.json
