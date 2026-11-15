@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
@@ -63,6 +64,10 @@ dependencies {
 
     // Authentication
     implementation("com.google.firebase:firebase-auth")
+
+    // Retrofit (API REST do dicionário)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
