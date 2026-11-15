@@ -35,6 +35,8 @@ graph TD
     REPO -->|Converter Task para Suspend| UTIL[TaskExtensions.awaitTask]
     UTIL -->|Acessa Firestore Singleton| FP[FirestoreProvider]
     FP -->|Consulta Leitura NoSQL| FS[(Firebase Cloud Firestore)]
+    REPO -->|DictionaryRepository| RP[RetrofitProvider / MankierApi]
+    RP -->|HTTP GET JSON| MK[(API REST do Mankier)]
 ```
 
 ---

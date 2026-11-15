@@ -6,10 +6,11 @@ Instruções para compilar e executar o projeto LinuxQuest em seu ambiente local
 
 ## 📋 Pré-requisitos
 
-1. **Android Studio**: Ladybug (2024.2.1+) ou versão superior.
-2. **JDK**: JDK 17 ou JDK 11 configurado.
+1. **Android Studio**: versão estável recente (testado no 2026.2.2). Versões antigas, como Ladybug, não suportam o AGP `9.3.3` usado no projeto.
+2. **JDK**: JDK 25 (definido em `gradle/gradle-daemon-jvm.properties`). O JDK embutido no Android Studio já atende.
 3. **Dispositivo/Emulador**: Dispositivo físico ou AVD rodando Android API 24 (Android 7.0) ou superior.
-4. **Arquivo Firebase**: `google-services.json` Válido posicionado em `LinuxQuest/app/google-services.json`.
+4. **Arquivo Firebase**: `google-services.json` válido posicionado em `LinuxQuest/app/google-services.json`. O arquivo está no `.gitignore` e é compartilhado fora do repositório.
+5. **Internet**: necessária para o Firestore e para a API do Mankier (Dicionário).
 
 ---
 

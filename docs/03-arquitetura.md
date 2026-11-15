@@ -64,9 +64,12 @@ LinuxQuest/
 │   │   │   │   └── util/
 │   │   │   │       ├── FirestoreVerifier.kt
 │   │   │   │       └── TaskExtensions.kt
-│   │   │   └── google-services.json
-│   │   └── build.gradle.kts
-│   └── build.gradle.kts
+│   │   │   └── AndroidManifest.xml
+│   ├── build.gradle.kts
+│   └── google-services.json   # não versionado (ver 09-como-executar)
+├── gradle/
+│   └── libs.versions.toml
+├── build.gradle.kts
 └── settings.gradle.kts
 ```
 

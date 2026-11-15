@@ -19,5 +19,6 @@ Muitos estudantes e profissionais iniciantes enfrentam dificuldades para aprende
 - **Trilha de Aprendizado Visual**: Mapa de nós de lições conectados por curvas Bézier fluida em gradiente verde.
 - **Integração em Tempo Real com Cloud Firestore**: Leitura dinâmica de níveis, lições, missões, comandos e conquistas diretamente do banco NoSQL.
 - **Terminal Interativo Simulado**: Suporte a prompt customizado, campo de digitação, validação de sintaxe (com remoção automática de espaços extras) e exibição de saída simulada.
+- **Dicionário de Comandos**: Busca de comandos com filtros por categoria, consumindo a API REST do Mankier via Retrofit, e tela de detalhes com exemplos e seções do manual.
 - **Barra de Navegação Inferior**: Acesso rápido às abas **Trilha**, **Dicionário**, **Progresso** e **Perfil**, com ocultamento automático durante a realização de uma missão.
 - **Verificação Automática no Startup**: Teste de conectividade com as coleções do Firestore ao iniciar a aplicação.

@@ -104,7 +104,7 @@ Representa o desafio interativo da lição.
 ---
 
 ### 4. Coleção `commands`
-Utilizada para buscas no Dicionário de comandos Linux.
+Catálogo de comandos Linux. Atualmente é lida apenas pelo `FirestoreVerifier` na inicialização; o Dicionário usa a API do Mankier (ver `06-funcionamento.md`).
 - `id` (String): ID do documento (ex: `"pwd"`).
 - `name` (String): Nome do comando.
 - `category` (String): Categoria do comando (ex: `"Navegação"`).

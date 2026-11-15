@@ -10,6 +10,7 @@ Regras de desenvolvimento e medidas de segurança aplicadas ao aplicativo.
    - O terminal interativo do aplicativo é **uma simulação visual gráfica**.
    - Nenhum comando é repassado ao shell nativo do dispositivo Android.
    - Todo o comportamento é controlado pela lógica de comparação de strings no `MissionViewModel`.
+   - O Dicionário apenas consulta a documentação (man pages) na API do Mankier; nenhum comando é executado.
 
 2. **Normalização de Comandos**:
    - A validação de comandos no terminal desconsidera espaços adicionais nas extremidades ou múltiplos espaços entre argumentos:
@@ -20,5 +21,5 @@ Regras de desenvolvimento e medidas de segurança aplicadas ao aplicativo.
      ```
 
 3. **Proteção de Credenciais**:
-   - Credenciais e chaves do Firebase são mantidas no arquivo `google-services.json` configurado no diretório da aplicação.
+   - Credenciais e chaves do Firebase são mantidas no arquivo `google-services.json` em `app/`, que está no `.gitignore` e não é versionado.
    - Nenhuma chave secreta ou privada é exposta no código-fonte Kotlin ou na documentação.
