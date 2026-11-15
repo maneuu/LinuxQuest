@@ -2,10 +2,9 @@ package br.com.linuxquest.app.ui.screens.dictionary
 
 import br.com.linuxquest.app.data.model.ManSearchResult
 
-// Filtros baseados nas seções do manual do Linux (man 1, man 8, ...)
+// Filtros baseados nas seções do manual do Linux (man 8, man 5, ...)
 enum class DictionaryFilter(val label: String, val sections: Set<Char>) {
     ALL("Todos", emptySet()),
-    COMMANDS("Comandos", setOf('1')),
     ADMIN("Admin", setOf('8')),
     CONFIG("Config", setOf('5')),
     PROGRAMMING("Dev", setOf('2', '3'));
@@ -24,6 +23,6 @@ sealed interface DictionaryResultState {
 
 data class DictionaryUiState(
     val query: String = "",
-    val filter: DictionaryFilter = DictionaryFilter.COMMANDS,
+    val filter: DictionaryFilter = DictionaryFilter.ALL,
     val resultState: DictionaryResultState = DictionaryResultState.Idle
 )
