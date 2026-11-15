@@ -1,10 +1,10 @@
-# LinuxQuest 🐧⚡
+# LinuxQuest
 
 > Aplicativo Android nativo focado no ensino gamificado de comandos do terminal Linux (Bash), utilizando uma trilha visual interativa e um terminal prático totalmente simulado.
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - **Trilha de aprendizado**: mapa de lições no estilo Duolingo, com níveis e lições carregados do Cloud Firestore.
 - **Missões em 4 etapas**: Cenário ➔ Aprendizado ➔ Terminal Prático ➔ Feedback.
@@ -14,7 +14,7 @@
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 | Área | Tecnologia |
 | :--- | :--- |
@@ -28,7 +28,7 @@
 
 ---
 
-## 🚀 Como executar
+## Como executar
 
 ### Pré-requisitos
 - **Android Studio** estável recente (testado no 2026.2.2). Ele já traz o JDK 25 exigido pelo projeto.
@@ -44,14 +44,14 @@
    ```
    LinuxQuest/app/google-services.json
    ```
-   > ⚠️ Esse arquivo dá acesso ao banco, está no `.gitignore` e **não deve ser commitado**. Peça para alguém da equipe.
+   > **Atenção:** esse arquivo dá acesso ao banco, está no `.gitignore` e **não deve ser commitado**. Peça para alguém da equipe.
 3. No Android Studio, vá em **File → Open** e selecione a pasta `LinuxQuest` (a pasta inteira, não um arquivo).
-4. Aguarde o **Gradle Sync** terminar. Se o botão ▶ ficar cinza, rode **File → Sync Project with Gradle Files**.
-5. Escolha o emulador/dispositivo na barra superior e clique em **▶ Run 'app'** (`Shift + F10`).
+4. Aguarde o **Gradle Sync** terminar. Se o botão de Run ficar cinza, rode **File → Sync Project with Gradle Files**.
+5. Escolha o emulador/dispositivo na barra superior e clique em **Run 'app'** (`Shift + F10`).
 
 ---
 
-## 📂 Estrutura
+## Estrutura
 
 ```text
 app/src/main/java/br/com/linuxquest/app/
@@ -68,7 +68,7 @@ app/src/main/java/br/com/linuxquest/app/
 
 ---
 
-## 📚 Documentação
+## Documentação
 
 A documentação completa está na pasta [`docs/`](docs):
 
@@ -84,12 +84,4 @@ A documentação completa está na pasta [`docs/`](docs):
 | [08 · Segurança e regras](docs/08-seguranca-e-regras.md) | Terminal simulado e credenciais |
 | [09 · Como executar](docs/09-como-executar.md) | Configuração do ambiente |
 | [10 · Status do projeto](docs/10-status-do-projeto.md) | O que está pronto e o que falta |
-
----
-
-## 🤝 Contribuindo
-
-- Crie uma branch a partir da `master` (ex: `feat/nome-da-tela`).
-- Use [commits semânticos](https://www.conventionalcommits.org/pt-br/): `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`, `build:`.
-- Abra um Pull Request para a `master`.
 
