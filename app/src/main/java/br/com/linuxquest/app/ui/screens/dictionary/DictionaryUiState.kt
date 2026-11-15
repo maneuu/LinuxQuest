@@ -6,9 +6,9 @@ import br.com.linuxquest.app.data.model.ManSearchResult
 enum class DictionaryFilter(val label: String, val sections: Set<Char>) {
     ALL("Todos", emptySet()),
     COMMANDS("Comandos", setOf('1')),
-    ADMIN("Administração", setOf('8')),
-    CONFIG("Configuração", setOf('5')),
-    PROGRAMMING("Programação", setOf('2', '3'));
+    ADMIN("Admin", setOf('8')),
+    CONFIG("Config", setOf('5')),
+    PROGRAMMING("Dev", setOf('2', '3'));
 
     fun matches(result: ManSearchResult): Boolean =
         sections.isEmpty() || result.section.firstOrNull() in sections

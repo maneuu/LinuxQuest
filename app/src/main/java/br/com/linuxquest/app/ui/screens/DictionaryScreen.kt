@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -226,13 +225,18 @@ private fun SearchField(
     )
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun FilterRow(
     selected: DictionaryFilter,
     onFilterSelected: (DictionaryFilter) -> Unit
 ) {
-    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        items(DictionaryFilter.entries) { filter ->
+    // FlowRow quebra os chips para a linha de baixo em telas estreitas em vez de cortá-los
+    FlowRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        DictionaryFilter.entries.forEach { filter ->
             FilterChip(
                 selected = filter == selected,
                 onClick = { onFilterSelected(filter) },

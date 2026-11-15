@@ -39,6 +39,6 @@ Detalhamento técnico dos principais fluxos de execução do aplicativo.
 ### 5. Dicionário de Comandos (`DictionaryScreen` & `DictionaryViewModel`)
 - A busca consome a API REST do Mankier (`https://www.mankier.com/api/v2/`) via Retrofit (`MankierApi` / `DictionaryRepository`). O conteúdo da API é em inglês.
 - O texto digitado passa por `debounce` de 400 ms antes de disparar a requisição `GET mans/?q=`.
-- Os filtros (**Todos**, **Comandos**, **Administração**, **Configuração**, **Programação**) usam a seção do manual (`man 1`, `man 8`, `man 5`, `man 2/3`) e são aplicados localmente, sem nova requisição.
+- Os filtros (**Todos**, **Comandos**, **Admin**, **Config**, **Dev**) usam a seção do manual (`man 1`, `man 8`, `man 5`, `man 2/3`) e são aplicados localmente, sem nova requisição.
 - A lista mostra apenas um resumo (nome, seção e descrição curta). Ao tocar num resultado, abre a `CommandDetailScreen`.
 - Na tela de detalhes, o `CommandDetailViewModel` carrega a man page (`GET mans/{nome.seção}`), exibe os exemplos **TL;DR** num terminal estilizado e lista as seções do manual em cards expansíveis, carregados sob demanda (`GET mans/{nome.seção}/sections/{id}`).
