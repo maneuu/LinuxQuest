@@ -49,7 +49,10 @@ fun MainScreen() {
                     },
                     modifier = modifier
                 )
-                is Screen.Dictionary -> DictionaryScreen(modifier = modifier)
+                is Screen.Dictionary -> DictionaryScreen(
+                    onOpenCommand = {},
+                    modifier = modifier
+                )
                 is Screen.Progress -> ProgressScreen(modifier = modifier)
                 is Screen.Profile -> ProfileScreen(modifier = modifier)
                 else -> TrackScreen(
