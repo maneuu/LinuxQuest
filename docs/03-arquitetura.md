@@ -19,12 +19,17 @@ LinuxQuest/
 │   │   │   │   │   │   ├── Command.kt
 │   │   │   │   │   │   ├── Lesson.kt
 │   │   │   │   │   │   ├── Level.kt
+│   │   │   │   │   │   ├── ManPage.kt
 │   │   │   │   │   │   └── Mission.kt
 │   │   │   │   │   ├── remote/
-│   │   │   │   │   │   └── FirestoreProvider.kt
+│   │   │   │   │   │   ├── FirestoreProvider.kt
+│   │   │   │   │   │   └── api/
+│   │   │   │   │   │       ├── MankierApi.kt
+│   │   │   │   │   │       └── RetrofitProvider.kt
 │   │   │   │   │   └── repository/
 │   │   │   │   │       ├── AchievementRepository.kt
 │   │   │   │   │       ├── CommandRepository.kt
+│   │   │   │   │       ├── DictionaryRepository.kt
 │   │   │   │   │       ├── LessonRepository.kt
 │   │   │   │   │       ├── LevelRepository.kt
 │   │   │   │   │       └── MissionRepository.kt
@@ -34,11 +39,18 @@ LinuxQuest/
 │   │   │   │   │   │   ├── MainScreen.kt
 │   │   │   │   │   │   └── Screen.kt
 │   │   │   │   │   ├── screens/
+│   │   │   │   │   │   ├── CommandDetailScreen.kt
 │   │   │   │   │   │   ├── DictionaryScreen.kt
 │   │   │   │   │   │   ├── MissionScreen.kt
 │   │   │   │   │   │   ├── ProfileScreen.kt
 │   │   │   │   │   │   ├── ProgressScreen.kt
 │   │   │   │   │   │   ├── TrackScreen.kt
+│   │   │   │   │   │   ├── command/
+│   │   │   │   │   │   │   ├── CommandDetailUiState.kt
+│   │   │   │   │   │   │   └── CommandDetailViewModel.kt
+│   │   │   │   │   │   ├── dictionary/
+│   │   │   │   │   │   │   ├── DictionaryUiState.kt
+│   │   │   │   │   │   │   └── DictionaryViewModel.kt
 │   │   │   │   │   │   ├── mission/
 │   │   │   │   │   │   │   ├── MissionUiState.kt
 │   │   │   │   │   │   │   └── MissionViewModel.kt
@@ -64,6 +76,7 @@ LinuxQuest/
 
 - **`data/model`**: Contém as `data classes` Kotlin atreladas às coleções do Firestore (`@DocumentId` e construtores padrão).
 - **`data/remote`**: Provedor singleton (`FirestoreProvider`) com a instância do `FirebaseFirestore` e constantes das coleções.
+- **`data/remote/api`**: Interface Retrofit (`MankierApi`) e provedor (`RetrofitProvider`) da API REST do Mankier, usada pelo Dicionário.
 - **`data/repository`**: Camada de repositórios assíncronos (`LevelRepository`, `LessonRepository`, `MissionRepository`, `CommandRepository`, `AchievementRepository`).
 - **`ui/navigation`**: Controle de rotas (`Screen`), componente `LinuxQuestBottomNavigation` e container principal `MainScreen`.
 - **`ui/screens`**: Telas e ViewModels em Jetpack Compose (`TrackScreen`, `MissionScreen`, `DictionaryScreen`, `ProgressScreen`, `ProfileScreen`).

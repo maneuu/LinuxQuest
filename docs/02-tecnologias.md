@@ -16,5 +16,6 @@ O LinuxQuest é desenvolvido utilizando as tecnologias mais modernas recomendada
 | **ViewModel & StateFlow** | Lifecycle `2.11.0` / `2.8.7` | Arquitetura de UI reativa com retenção de estado durante mudanças de rota/orientação. |
 | **Kotlin Coroutines** | Play Services Coroutines | Execução de tarefas assíncronas e chamadas suspendíveis ao banco de dados. |
 | **Firebase Cloud Firestore** | Firebase BOM `35.2.0` | Banco de dados NoSQL para níveis, lições, missões, comandos e conquistas. |
+| **Retrofit + Gson** | Retrofit `3.0.0` | Cliente HTTP para consumir a API REST do Mankier (dicionário de comandos). |
 | **Firebase Authentication** | Firebase BOM `35.2.0` | Biblioteca de autenticação (dependência configurada no Gradle). |
 | **Gradle Kotlin DSL** | AGP `9.3.3` | Gerenciamento de build e dependências da aplicação. |
