@@ -33,11 +33,12 @@ class ProfileViewModel : ViewModel() {
 
         viewModelScope.launch {
             try {
-                username = authRepository.getUsername(uid)
+                val user = authRepository.getUser(uid)
+                username = user?.username?.ifEmpty { null } ?: "user"
 
                 // Ano em que a conta foi criada
                 val calendar = Calendar.getInstance()
-                calendar.timeInMillis = authRepository.getCreatedAt(uid) ?: System.currentTimeMillis()
+                calendar.timeInMillis = user?.createdAt ?: System.currentTimeMillis()
                 memberSince = calendar.get(Calendar.YEAR).toString()
 
                 notesCount = noteRepository.getNotes().size

@@ -1,38 +1,28 @@
 package br.com.linuxquest.app.data.repository
 
+import br.com.linuxquest.app.data.model.User
 import br.com.linuxquest.app.data.remote.FirestoreProvider
 import br.com.linuxquest.app.util.SessionManager
 import br.com.linuxquest.app.util.awaitTask
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.SetOptions
 
-// Progresso do usuário, salvo no próprio documento users/{uid}:
-//   xp: Int
-//   completedMissions: lista de ids das missões concluídas
-//   completedLessons: lista de ids das lições concluídas
+// Progresso do usuário, salvo no próprio documento users/{uid}
+// (campos xp, completedMissions e completedLessons do model User).
 class ProgressRepository {
 
     private val db = FirestoreProvider.db
 
-    data class UserProgress(
-        val xp: Int = 0,
-        val completedMissions: List<String> = emptyList(),
-        val completedLessons: List<String> = emptyList()
-    )
-
-    suspend fun getProgress(): UserProgress {
-        val uid = SessionManager.userId ?: return UserProgress()
+    // Visitante (ninguém logado) ou documento inexistente: User vazio, sem progresso
+    suspend fun getProgress(): User {
+        val uid = SessionManager.userId ?: return User()
 
         val doc = db.collection(FirestoreProvider.COLLECTION_USERS)
             .document(uid)
             .get()
             .awaitTask()
 
-        return UserProgress(
-            xp = doc.getLong("xp")?.toInt() ?: 0,
-            completedMissions = doc.get("completedMissions") as? List<String> ?: emptyList(),
-            completedLessons = doc.get("completedLessons") as? List<String> ?: emptyList()
-        )
+        return doc.toObject(User::class.java) ?: User()
     }
 
     // Chamado quando o usuário acerta o comando de uma missão

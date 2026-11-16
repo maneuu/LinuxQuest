@@ -1,5 +1,6 @@
 package br.com.linuxquest.app.data.repository
 
+import br.com.linuxquest.app.data.model.User
 import br.com.linuxquest.app.data.remote.FirestoreProvider
 import br.com.linuxquest.app.util.SessionManager
 import br.com.linuxquest.app.util.awaitTask
@@ -15,13 +16,13 @@ class AuthRepository {
 
     suspend fun login(email: String, password: String) {
         val result = users.whereEqualTo("email", email).limit(1).get().awaitTask()
-        val doc = result.documents.firstOrNull()
+        val user = result.documents.firstOrNull()?.toObject(User::class.java)
             ?: throw Exception("E-mail não encontrado")
 
-        if (doc.getString("password") != password) {
+        if (user.password != password) {
             throw Exception("Senha incorreta")
         }
-        SessionManager.userId = doc.id
+        SessionManager.userId = user.id
     }
 
     suspend fun createAccount(username: String, email: String, password: String) {
@@ -30,25 +31,20 @@ class AuthRepository {
             throw Exception("Já existe uma conta com esse e-mail")
         }
 
-        val userData = hashMapOf(
-            "username" to username,
-            "email" to email,
-            "password" to password,
-            "createdAt" to System.currentTimeMillis()
+        val newUser = User(
+            username = username,
+            email = email,
+            password = password,
+            createdAt = System.currentTimeMillis()
         )
-        val newDoc = users.add(userData).awaitTask()
+        val newDoc = users.add(newUser).awaitTask()
         SessionManager.userId = newDoc.id
     }
 
-    suspend fun getUsername(uid: String): String {
+    // Busca o usuário completo (null se o documento não existir)
+    suspend fun getUser(uid: String): User? {
         val doc = users.document(uid).get().awaitTask()
-        return doc.getString("username") ?: "user"
-    }
-
-    // Data de criação da conta em milissegundos (null se o documento não tiver)
-    suspend fun getCreatedAt(uid: String): Long? {
-        val doc = users.document(uid).get().awaitTask()
-        return doc.getLong("createdAt")
+        return doc.toObject(User::class.java)
     }
 
     fun logout() {
