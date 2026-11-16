@@ -19,6 +19,8 @@ sealed class Screen(
     object Profile : Screen("perfil", "Perfil", Icons.Default.Person)
     object Mission : Screen("missao", "Missão", Icons.Default.Close)
     object CommandDetail : Screen("comando", "Comando", Icons.Default.Search)
+    object Auth : Screen("auth", "Entrar", Icons.Default.Person)
+    object Notes : Screen("anotacoes", "Anotações", Icons.Default.Person)
 
     companion object {
         // Apenas as 4 abas visíveis na Bottom Navigation

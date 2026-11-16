@@ -11,4 +11,6 @@ object FirestoreProvider {
     const val COLLECTION_MISSIONS = "missions"
     const val COLLECTION_COMMANDS = "commands"
     const val COLLECTION_ACHIEVEMENTS = "achievements"
+    const val COLLECTION_USERS = "users"
+    const val COLLECTION_NOTES = "notes"
 }

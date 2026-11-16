@@ -15,4 +15,5 @@
 local.properties
 
 # Firebase (compartilhado fora do repositório)
+app/google-services.json
 google-services.json

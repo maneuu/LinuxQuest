@@ -33,14 +33,14 @@
 ### Pré-requisitos
 - **Android Studio** estável recente (testado no 2026.2.2). Ele já traz o JDK 25 exigido pelo projeto.
 - Emulador ou celular com **Android 7.0 (API 24)** ou superior.
-- Arquivo **`google-services.json`** do Firebase do projeto.
+- Arquivo **`app/google-services.json`** do Firebase do projeto.
 
 ### Passo a passo
 1. Clone o repositório:
    ```bash
    git clone git@github.com:maneuu/LinuxQuest.git
    ```
-2. Coloque o `google-services.json` dentro da pasta **`app/`**:
+2. Coloque o `app/google-services.json` dentro da pasta **`app/`**:
    ```
    LinuxQuest/app/google-services.json
    ```

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.linuxquest.app.data.model.Mission
 import br.com.linuxquest.app.data.repository.MissionRepository
+import br.com.linuxquest.app.data.repository.ProgressRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,6 +13,8 @@ import kotlinx.coroutines.launch
 class MissionViewModel(
     private val missionRepository: MissionRepository = MissionRepository()
 ) : ViewModel() {
+
+    private val progressRepository = ProgressRepository()
 
     private val _uiState = MutableStateFlow<MissionUiState>(MissionUiState.Loading)
     val uiState: StateFlow<MissionUiState> = _uiState.asStateFlow()
@@ -111,6 +114,16 @@ class MissionViewModel(
                     isCommandCorrect = true,
                     errorMessage = null
                 )
+
+                // Salva o progresso (XP e missão concluída) no Firestore
+                val mission = currentState.mission
+                viewModelScope.launch {
+                    try {
+                        progressRepository.completeMission(mission.id, mission.lessonId, mission.xpReward)
+                    } catch (e: Exception) {
+                        // Se falhar, o usuário continua a missão normalmente
+                    }
+                }
             } else {
                 _uiState.value = currentState.copy(
                     isCommandCorrect = false,
